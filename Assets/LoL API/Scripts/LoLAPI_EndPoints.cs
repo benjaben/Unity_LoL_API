@@ -1,17 +1,23 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.Networking;
+using System.Collections;
 using System;
 
 namespace LoLAPI
 {
     public class LoLAPI_WebRequest
     {
-        private IEnumerator GetRequest<T>(string url, Action<T> callback) where T : LoLAPI_JsonObject
+        public void GetSummonerDTO(string summonerName, Action<LolAPI_JSONSummonerDTO> callback)
         {
+            LoLAPI_Routines.Singleton.RunCoroutine(GetRequest<LolAPI_JSONSummonerDTO>("/lol/summoner/v4/summoners/by-name/" + summonerName, callback));
+        }
+
+        private IEnumerator GetRequest<T>(string endpoint, Action<T> callback) where T : LoLAPI_JsonObject
+        {
+            string url = "https://na1.api.riotgames.com" + endpoint + "?api_key=" + LoLAPI_Settings.API_KEY;
+
             using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
             {
-                // Request and wait for the desired page.
                 yield return webRequest.SendWebRequest();
 
                 if (webRequest.isNetworkError)

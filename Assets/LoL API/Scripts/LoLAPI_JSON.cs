@@ -1,4 +1,6 @@
-﻿namespace LoLAPI
+﻿using UnityEngine;
+
+namespace LoLAPI
 {
     public static class LoLAPI_Json
     {
@@ -10,6 +12,17 @@
 
     public abstract class LoLAPI_JsonObject
     {
+        
+    }
 
+    public class LolAPI_JSONSummonerDTO : LoLAPI_JsonObject
+    {
+        public int profileIconId;
+        public string name;
+        public string puuid;
+        public long summonerLevel;
+        public long revisionDate;
+        public string id;
+        public string accountId;
     }
 }

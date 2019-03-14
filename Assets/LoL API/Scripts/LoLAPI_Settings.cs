@@ -1,6 +1,6 @@
 ﻿namespace LoLAPI
 {
-    public static class Settings
+    public static class LoLAPI_Settings
     {
         public static string API_KEY = "";
     }
