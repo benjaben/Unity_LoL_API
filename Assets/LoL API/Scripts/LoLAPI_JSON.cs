@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace LoLAPI
 {
@@ -37,7 +38,7 @@ namespace LoLAPI
     }
 
     [Serializable]
-    public class LoLAPI_JsonChampionMasteryDTOCollection : LoLAPI_JsonObject
+    public class LoLAPI_JsonChampionMasteryDTO : LoLAPI_JsonObject
     {
         public bool chestGranted;
         public int championLevel;
@@ -48,5 +49,24 @@ namespace LoLAPI
         public int tokensEarned;
         public long championPointsSinceLastLevel;
         public string summonerId;
+    }
+
+    [Serializable]
+    public class LoLAPI_JsonChampionDataCollection : LoLAPI_JsonObject
+    {
+        public string type;
+        public string format;
+        public string version;
+        public Dictionary<string, LoLAPI_JsonChampionData> data;
+    }
+
+    [Serializable]
+    public class LoLAPI_JsonChampionData
+    {
+        public string version;
+        public string id;
+        public long key;
+        public string name;
+        public string title;
     }
 }

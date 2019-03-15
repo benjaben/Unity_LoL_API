@@ -35,8 +35,13 @@ namespace LoLAPI
 
                 m_APIRequester.GetChampionMasteries(m_StoredSummonerId, (championData) => 
                 {
-                    Debug.Log(championData[0].championId);
+                    
                 });
+            });
+
+            m_APIRequester.GetChampionData((data) => 
+            {
+                
             });
         }
 
